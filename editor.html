@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Edit Page</title>
+    <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script src="dist/grapesjs_save.min.js"></script>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="gjs" style="height:0px; overflow:hidden">
+</div>
+
+
+<script type="text/javascript">
+    var editor = grapesjs.init({
+        height: '100%',
+        showOffsets: 1,
+        noticeOnUnload: 0,
+        storageManager: { autoload: 0 },
+        container: '#gjs',
+        fromElement: true,
+        showDevices: false,
+        plugins: ['grapesjs'],
+        pluginsOpts: {
+            'grapesjs': {
+                blocks: {},
+                blockCategories: {},
+                labels: {},
+                gridDevicesPanel: true,
+                formPredefinedActions: [
+                    {name: 'Contact', value: '/contact'},
+                    {name: 'landing', value: '/landing'},
+                ]
+            }
+        },
+        canvas: {
+            styles: [
+                "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            ],
+            scripts: [
+                "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+                "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            ],
+        }
+    });
+    window.editor = editor;
+    window.onload = () => {
+        window.Pages.editorLoad();
+    };
+</script>
+</body>
+</html>

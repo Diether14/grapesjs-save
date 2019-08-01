@@ -5,7 +5,7 @@ import loadComponents from './components';
 import loadBlocks from './blocks';
 import loadDevices from './devices';
 import loadCustomCommands from './customCommands';
-
+import './editor';
 export default grapesjs.plugins.add('grapesjs', (editor, opts = {}) => {
 
   window.editor = editor;

@@ -6,11 +6,12 @@ export default (editor, config = {}) => {
         const actions = {
             run(editor){
                 let html = '<style> '+ editor.getCss() +' </style> ' + editor.getHtml();
-                let name = 'test';
+                let url = new URL(window.location.href);
+                let id = url.searchParams.get("id");
                 let data = new FormData;
-                data.append('name', name);
                 data.append('html',html);
-                axios.post('http://localhost/grapesjs/api/pages/create.php',data)
+                data.append('id', id)
+                axios.post('http://localhost/grapesjs-save/api/pages/updatePage.php',data)
                 .then((response) => {
                     console.log(response);
                 })
