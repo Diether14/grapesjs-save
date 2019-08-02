@@ -1,6 +1,6 @@
 {
   "name": "grapesjs_save",
-  "version": "1.0.94",
+  "version": "1.0.102",
   "description": "GrapesJS With Create and Update Function",
   "main": "dist/grapesjs.min.js",
   "scripts": {

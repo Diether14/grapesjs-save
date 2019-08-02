@@ -11,7 +11,7 @@ export default (editor, config = {}) => {
                 let data = new FormData;
                 data.append('html',html);
                 data.append('id', id)
-                axios.post('http://localhost/grapesjs-save/api/pages/updatePage.php',data)
+                axios.post('/api/pages/updatePage.php',data)
                 .then((response) => {
                     console.log(response);
                 })

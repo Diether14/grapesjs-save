@@ -1,7 +1,7 @@
 import axios from 'axios';
 window.Pages = {
     indexLoad: () => {
-        axios.get('http://localhost/grapesjs-save/api/pages/index.php')
+        axios.get('/api/pages/index.php')
         .then( (result) => {
             result.data.forEach(element => {
                 window.Pages.indexAddColumn(element.name, element.id, -1);
@@ -10,7 +10,7 @@ window.Pages = {
     },
     deletePage : (id) => {
         if(confirm('Delete Contact #'+id)){
-            axios.delete('http://localhost/grapesjs-save/api/pages/delete.php',{ params: {
+            axios.delete('/api/pages/delete.php',{ params: {
                 id: id
             }})
             .then((result)=> {
@@ -23,12 +23,12 @@ window.Pages = {
         }
     },
     editRedirect: (id) => {
-        window.location = 'http://localhost/grapesjs-save/edit.html?id=' + id;
+        window.location = '/edit.html?id=' + id;
     },
     editLoad: () => {
         let url = new URL(window.location.href);
         let id = url.searchParams.get("id");
-        axios.get('http://localhost/grapesjs-save/api/pages/view.php',{
+        axios.get('/api/pages/view.php',{
             params: {
                 id: id,
             }
@@ -81,7 +81,7 @@ window.Pages = {
         let data = new FormData;
         data.append('name', name);
         data.append('html',html);
-        axios.post('http://localhost/grapesjs-save/api/pages/create.php',data)
+        axios.post('/api/pages/create.php',data)
         .then((response) => {
             alert('Page Added');
             window.Pages.indexAddColumn(response.data.name, response.data.id, 1);
@@ -95,7 +95,7 @@ window.Pages = {
         let data = new FormData;
         data.append('name', name);
         data.append('id',id);
-        axios.post('http://localhost/grapesjs-save/api/pages/updateMeta.php',data)
+        axios.post('/api/pages/updateMeta.php',data)
         .then((response) => {
             console.log(response.data);
         })
@@ -103,12 +103,12 @@ window.Pages = {
     editorRedirect: () => {
         let url = new URL(window.location.href);
         let id = url.searchParams.get("id");
-        window.location = 'http://localhost/grapesjs-save/editor.html?id=' + id;
+        window.location = '/editor.html?id=' + id;
     },
     editorLoad: () => {
         let url = new URL(window.location.href);
         let id = url.searchParams.get("id");
-        axios.get('http://localhost/grapesjs-save/api/pages/view.php',{
+        axios.get('/api/pages/view.php',{
             params: {
                 id: id,
             }
